@@ -1,9 +1,14 @@
-import Image from 'next/image'
+'use client'
 
+import Navbar from "./components/Navbar";
+import WelcomePage from "./components/WelcomePage";
 export default function Home() {
+
+
   return (
-    <div className='h-screen'>
-      <h1>Hello</h1>
-    </div>
+    <main>
+      <Navbar/>
+      <WelcomePage/>
+    </main>
   )
 }
