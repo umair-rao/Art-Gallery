@@ -1,5 +1,6 @@
 
 const WelcomePage = () => {
+
   return (
     <div className="h-screen">
         <div className="flex flex-col bg-beige items-center justify-between h-80 pt-10  ">
