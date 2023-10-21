@@ -86,6 +86,7 @@ const DisplayPage = () => {
             </p>
           ) : (
             <>
+            <h1 className="text-center text-4xl">Art Gallery</h1>
               {imageList.map((url) => {
                 return (
                   <div key={url} className="pt-5">
