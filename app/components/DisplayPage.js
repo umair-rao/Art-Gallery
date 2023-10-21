@@ -38,41 +38,48 @@ const DisplayPage = () => {
         setImageList(urls);
       });
     });
-
-    return () => {
-      unsubscribe();
-    };
   }, []);
 
-
   return (
-    <div className="bg-orange-200">
-      <h1 className="text-2xl text-center pt-3 pb-3">
-        Welcome to Art Gallery
-      </h1>
-      <div className="flex items-center justify-center bg-lime-200 border-2 border-slate-500">
-        <form className="flex flex-col w-72 h-72 pt-16" onSubmit={handleSubmit}>
-          <label htmlFor="text">Share your Memories:</label>
-          <input
-            type="file"
-            id="image"
-            name="image"
-            onChange={(e) => {
-              setImageUpload(e.target.files[0]);
-            }}
-            required
-          />
-          <br />
-          <button
-            className="bg-amber-500 w-16 rounded-md hover:bg-cyan-400"
-            type="submit"
-          >
-            Submit
-          </button>
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="flex flex-col items-center w-full space-y-8">
+        <div>
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            Share your Memories
+          </h2>
+        </div>
+        <div>
+        <form className="max-w-md mt-8 space-y-6" onSubmit={handleSubmit}>
+          <label htmlFor="text">Upload Images:</label>
+          <div className="rounded-md shadow-sm -space-y-px">
+            <div>
+              <label htmlFor="image" className="sr-only">
+                Image
+              </label>
+              <input
+                id="image"
+                name="image"
+                type="file"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Upload an image"
+                onChange={(e) => {
+                  setImageUpload(e.target.files[0]);
+                }}
+                required
+              />
+            </div>
+          </div>
+          <div>
+            <button
+              type="submit"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Submit
+            </button>
+          </div>
         </form>
-      </div>
-      <div className="flex flex-col justify-center items-center">
-        <div className="flex flex-col justify-center items-center w-[32rem] h-auto">
+        </div>
+        <div className="grid grid-cols-4 gap-4 mt-8">
           {imageList.length === 0 ? (
             <p className="text-lg text-gray-600">
               Please upload your first post
@@ -81,8 +88,8 @@ const DisplayPage = () => {
             <>
               {imageList.map((url) => {
                 return (
-                  <div key={url} className="pt-5 w-[32rem]">
-                    <img src={url} className="pt-5" alt="Uploaded Image" />
+                  <div key={url} className="pt-5">
+                    <img src={url} className="p-2 h-80 w-96" alt="Uploaded Image" />
                   </div>
                 );
               })}
